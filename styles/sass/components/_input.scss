@@ -1,0 +1,88 @@
+.form-field {
+  width: 100%;
+  height: 39px;
+  padding: 2px 12px;
+  display: block;
+  outline: none;
+  font-size: 17px;
+  font-weight: 400;
+  font-family: $fontText;
+  border: 1px solid #ced4da;
+  background-clip: padding-box;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  direction: $direction;
+  &:focus {
+    box-shadow: 0 0 0 2.5px rgba($primary, 0.3);
+    border: 1px solid rgba($primary, 0.4);
+  }
+  &.is-valid  {
+    border: 1px solid $success;
+    padding-left: calc(1.5em + 0.75rem);
+    background-image: url('/valid.svg');
+    background-repeat: no-repeat;
+    background-position: left calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    &:focus {
+      box-shadow: 0 0 0 2.5px rgba($success, 0.3);
+    }
+  }
+  &.not-valid  {
+    border: 1px solid $danger;
+    padding-left: calc(1.5em + 0.75rem);
+    background-image: url('/notvalid.svg');
+    background-repeat: no-repeat;
+    background-position: left calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    &:focus {
+      box-shadow: 0 0 0 2.5px rgba($danger, 0.3);
+    }
+  }
+}
+select.form-field {
+  &.not-valid,
+  &.is-valid   {
+    padding-left: calc(2em + 0.75rem);
+    background-position: left calc(0.775em + 0.1875rem) center;
+  }
+}
+textarea.form-field {
+  height: 200px;
+  resize:none;
+  &.not-valid,
+  &.is-valid   {
+    background-position: 8px 8px;
+  }
+}
+
+.search {
+  position: relative;
+  .form-field {
+    height: 60px;
+    font-size: 19px;
+    padding-left: 80px;
+  }
+  .btn-primary {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5px;
+    z-index: 99;
+    height: 50px;
+    font-family: $fontTitle;
+  }
+}
+
+.field-label {
+  font-size: 17px;
+  font-family: $fontTitle;
+  font-weight: 300;
+  margin-bottom: 8px;
+  display: block
+}
+.field-error {
+  font-size: 16px;
+  font-family: $fontText;
+  line-height: 1.4;
+  color: $danger;
+}
