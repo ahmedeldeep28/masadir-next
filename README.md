@@ -1,4 +1,4 @@
-# مصادر (msader-next)
+# msader-next
 
 A comprehensive Arabic resource platform built with [Next.js](https://nextjs.org/). The site provides curated articles, book recommendations, useful websites, mobile apps, and computer programs to help users in their work, studies, and personal development.
 
@@ -22,6 +22,7 @@ A comprehensive Arabic resource platform built with [Next.js](https://nextjs.org
 ## Getting Started
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    # or
@@ -29,6 +30,7 @@ A comprehensive Arabic resource platform built with [Next.js](https://nextjs.org
    ```
 
 2. **Run the development server:**
+
    ```bash
    npm run dev
    # or
