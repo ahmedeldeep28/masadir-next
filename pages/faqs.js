@@ -6,7 +6,7 @@ import { fetchApi } from './../utils/handelApi';
 
 function faqs({ questions, error }) {
 
-    const questionsMaping = questions.map((item) => {
+    const questionsMapping = questions.map((item) => {
         return (
             <div className="col-md-6 mt-2" key={item._id}>
                 <QuestionCard data={item} />
@@ -18,7 +18,7 @@ function faqs({ questions, error }) {
         if (questions.length === 0) {
             return <HandelError  image="FAQs.svg" text=" لا يوجد سؤال وجواب علي المنصه الان"/>
         } else {
-            return <div className="row">{questionsMaping}</div>
+            return <div className="row">{questionsMapping}</div>
         }
     }
 

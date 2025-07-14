@@ -30,7 +30,6 @@ function contact() {
                 position: toast.POSITION.BOTTOM_RIGHT
             });
         } catch (error) {
-
             toast.error(error, {
                 position: toast.POSITION.BOTTOM_RIGHT
             });

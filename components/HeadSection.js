@@ -1,5 +1,5 @@
 
-function HeadSetion({ title, text }) {
+function HeadSection({ title, text }) {
     return (
         <div className="row my-3">
             <div className="col-md-6">
@@ -10,4 +10,4 @@ function HeadSetion({ title, text }) {
     )
 }
 
-export default HeadSetion
+export default HeadSection
