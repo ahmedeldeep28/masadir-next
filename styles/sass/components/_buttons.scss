@@ -1,44 +1,43 @@
-.btn-pirmary-out {
-    padding: 10px 15px;
-    border: 1px solid $primary;
-    color: $primary ;
-    border-radius: 7px;
-    outline: none;
-    font-size: 19px;
-    background: transparent;
-    position: relative;
-    transition: all .4s ease-in-out;
-    overflow: hidden;
-    cursor: pointer;
+.btn-primary-out {
+  padding: 10px 15px;
+  border: 1px solid $primary;
+  color: $primary;
+  border-radius: 7px;
+  outline: none;
+  font-size: 19px;
+  background: transparent;
+  position: relative;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+  cursor: pointer;
 
-    &:hover{
-        color: $white ;
-        border: 1px solid $white;
-    }
+  &:hover {
+    color: $white;
+    border: 1px solid $white;
+  }
 }
 .btn-primary {
-    padding: 10px 15px;
+  padding: 10px 15px;
+  border: 1px solid $primary;
+  color: $white;
+  border-radius: 7px;
+  outline: none;
+  font-size: 19px;
+  font-family: $fontTitle;
+  position: relative;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: $primary;
+  &:hover {
+    background-color: transparent;
+    color: $primary;
     border: 1px solid $primary;
-    color: $white;
-    border-radius: 7px;
-    outline: none;
-    font-size: 19px;
-     font-family: $fontTitle;
-    position: relative;
-    transition: all .4s ease-in-out;
-    overflow: hidden;
-    cursor: pointer;
+  }
+  &[disabled] {
     background-color: $primary;
-    &:hover{
-        background-color: transparent;
-        color: $primary;
-        border: 1px solid $primary;
-    }
-    &[disabled] {
-        background-color: $primary;
-        color: $white;
-        cursor: progress;
-        opacity: 0.5;
-    }
-
+    color: $white;
+    cursor: progress;
+    opacity: 0.5;
+  }
 }

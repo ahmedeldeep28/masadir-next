@@ -1,4 +1,4 @@
-@import "./sass/helpers/_varibail.scss";
+@import "./sass/helpers/_variables.scss";
 @import "./sass/components/_navbar.scss";
 @import "./sass/components/_footer.scss";
 @import "./sass/components/_input.scss";
@@ -151,6 +151,7 @@ span {
 .text-center {
   text-align: center;
 }
+
 .hero-section {
   height: 85vh;
   position: relative;

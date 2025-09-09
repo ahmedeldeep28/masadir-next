@@ -1,32 +1,11 @@
 import Head from "next/head";
 import HeroPages from "../../components/layout/HeroPages";
-import SectionCard from "./../../components/cards/SectionCard";
 import HeadSection from "../../components/HeadSection";
-import { fetchApi } from "../../utils/handelApi";
-import HandelError from "../../components/HandelError";
+import { getCategories } from "../../services/categoryServices";
+import FetchState from "../../components/FetchState";
+import CategoriesList from "../../components/categories/CategoriesList";
 
 function Sections({ categories, error }) {
-  const categoriesMapping = categories.map((category) => {
-    return (
-      <div className="col-sm-6 col-md-4  mt-5" key={category._id}>
-        <SectionCard name={category.name} image={category.image} />
-      </div>
-    );
-  });
-
-  const categoriesList = () => {
-    if (categories.length === 0) {
-      return (
-        <HandelError
-          image="writing-room.svg"
-          text="لا يتوجد اقسام علي الموقع الان"
-        />
-      );
-    } else {
-      return <div className="row">{categoriesMapping}</div>;
-    }
-  };
-
   return (
     <>
       <Head>
@@ -47,14 +26,15 @@ function Sections({ categories, error }) {
             text="نحن نوفر اليك الكثير من الاقسام في اغلب المجالات,كل ما عليك فعله هو الدخول الي احدي الاقسام لتجد كل المقالات المتعلقه بهذا القسم"
           />
 
-          {error ? (
-            <HandelError
-              image="server_down.svg"
-              text="توجد مشكله في الخادم الان"
-            />
-          ) : (
-            categoriesList()
-          )}
+          <FetchState
+            isError={error}
+            errorMessage={error}
+            isEmpty={categories.length === 0}
+            emptyImage="/writing-room.svg"
+            emptyMessage="لا يوجد اقسام في الموقع الان"
+          >
+            <CategoriesList categories={categories} />
+          </FetchState>
         </div>
       </section>
     </>
@@ -63,21 +43,23 @@ function Sections({ categories, error }) {
 
 export default Sections;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
-    const { categorys } = await fetchApi("categorys");
+    const { data: categories } = await getCategories({ populate: "*" });
     return {
       props: {
-        categories: categorys,
+        categories,
         error: null,
       },
+      revalidate: 60 * 60,
     };
   } catch (error) {
     return {
       props: {
         categories: [],
-        error,
+        error: error.message,
       },
+      revalidate: 60,
     };
   }
 }

@@ -33,20 +33,11 @@ function Navbar() {
 
   return (
     <>
-      <nav className={`navbar d-flex justify-items-center align-items-center  ${(navbarActive || pathname === '/article/[url]') ? 'active' : ''}`}>
+      <nav className={`navbar d-flex justify-items-center align-items-center  ${(navbarActive || pathname === '/article/[slug]') ? 'active' : ''}`}>
         <div className="container d-flex justify-content-between">
           <ul className="d-none d-lg-flex">
             <li><Link href="/">الرائيسية</Link></li>
-            <li className='position-relative'>
-              <Link href="/sections">الاقسام <i className="fi-rr-caret-down"></i></Link>
-              <ul className="d-flex flex-column">
-                <li><Link href="/sections/برمجه">برمجه</Link></li>
-                <li><Link href="/sections/اقتصاد">اقتصاد</Link></li>
-                <li><Link href="/sections/تصميم">تصميم</Link></li>
-                <li><Link href="/sections/علوم">علوم</Link></li>
-                <li><Link href="/sections">كل الاقسام</Link></li>
-              </ul>
-            </li>
+            <li className='position-relative'><Link href="/sections">الاقسام </Link></li>
             <li><Link href="/search?page=1">المقالات</Link></li>
             <li><Link href="/suggest">اقترح مصدر</Link></li>
             <li><Link href="/faqs">سؤال وجواب</Link></li>
@@ -68,7 +59,7 @@ function Navbar() {
         </div>
         <div className="logo">
           <Link href="/">
-            <Image width={200} height={100} src="/global-network.svg" alt="logo" />
+            <Image width={200} height={100} src="/favicon.svg" alt="logo" />
           </Link>
         </div>
         <ul className="menu">

@@ -1,70 +1,59 @@
-import Head from 'next/head'
-import HeroPages from './../components/layout/HeroPages';
-import QuestionCard from './../components/cards/QuestionCard';
-import HandelError from './../components/HandelError';
-import { fetchApi } from './../utils/handelApi';
+import Head from "next/head";
+import HeroPages from "./../components/layout/HeroPages";
+import { getQuestions } from "../services/faqServices";
+import FetchState from "../components/FetchState";
+import QuestionsList from "../components/faqs/QuestionsList";
 
 function faqs({ questions, error }) {
+  return (
+    <>
+      <Head>
+        <title>موقع مصادر- سؤال وجواب</title>
+        <meta
+          name="description"
+          content="يتم الرد علي الكثير من الاسئله التي توضح اهداف الموقع والمبادئ التي يتبعها الموقع والتي تساعد الناس علي معرفتنا اكثر والاسائله التي تساعدك في الوصول الي اكبر قدر من المعرفة بنا"
+        />
+      </Head>
+      <HeroPages
+        title="كل الاسئله والاجابات التي تخص الموقع"
+        text="يتم الرد علي الكثير من الاسئله التي توضح اهداف الموقع والمبادئ التي يتبعها الموقع والتي تساعد الناس علي معرفتنا اكثر والاسائله التي تساعدك في الوصول الي اكبر قدر من المعرفة بنا"
+      />
 
-    const questionsMapping = questions.map((item) => {
-        return (
-            <div className="col-md-6 mt-2" key={item._id}>
-                <QuestionCard data={item} />
-            </div>
-        )
-    })
-
-    const questionsList = () => {
-        if (questions.length === 0) {
-            return <HandelError  image="FAQs.svg" text=" لا يوجد سؤال وجواب علي المنصه الان"/>
-        } else {
-            return <div className="row">{questionsMapping}</div>
-        }
-    }
-
-    return (
-        <>
-            <Head>
-                <title>موقع مصادر- سؤال وجواب</title>
-                <meta name="description" content="يتم الرد علي الكثير من الاسئله التي توضح اهداف الموقع والمبادئ التي يتبعها الموقع والتي تساعد الناس علي معرفتنا اكثر والاسائله التي تساعدك في الوصول الي اكبر قدر من المعرفة بنا" />
-            </Head>
-            <HeroPages
-                title="كل الاسئله والاجابات التي تخص الموقع"
-                text="يتم الرد علي الكثير من الاسئله التي توضح اهداف الموقع والمبادئ التي يتبعها الموقع والتي تساعد الناس علي معرفتنا اكثر والاسائله التي تساعدك في الوصول الي اكبر قدر من المعرفة بنا"
-            />
-            
-            <section className="py-5">
-                <div className="container">
-                    {error
-                        ? <HandelError  image="server_down.svg"  text="توجد مشكله في الخادم الان"/>
-                        : questionsList()
-                    }
-                </div>
-            </section>
-        </>
-
-    )
+      <section className="py-5">
+        <div className="container">
+          <FetchState
+            isEmpty={questions.length === 0}
+            emptyImage="/FAQs.svg"
+            emptyMessage="لا يوجد سؤال وجواب علي المنصه الان"
+            isError={error}
+          >
+            <QuestionsList questions={questions} />
+          </FetchState>
+        </div>
+      </section>
+    </>
+  );
 }
 
-export default faqs
-
-
+export default faqs;
 
 export async function getStaticProps() {
-    try {
-        const { questions } = await fetchApi("faqs");
-        return {
-            props: {
-                questions,
-                error: null,
-            }
-        }
-    } catch (error) {
-        return {
-            props: {
-                questions: [],
-                error,
-            }
-        }
-    }
+  try {
+    const { data: questions } = await getQuestions();
+    return {
+      props: {
+        questions,
+        error: null,
+      },
+      revalidate: 60 * 60,
+    };
+  } catch (error) {
+    return {
+      props: {
+        questions: [],
+        error: error?.message || "Failed to fetch FAQs",
+      },
+      revalidate: 60,
+    };
+  }
 }
