@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["msader-api.vercel.app","localhost"],
+    domains: ["lovable-egg-f767570d7b.strapiapp.com","localhost"],
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
