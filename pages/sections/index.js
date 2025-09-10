@@ -51,7 +51,7 @@ export async function getStaticProps() {
         categories,
         error: null,
       },
-      revalidate: 60 * 60,
+      revalidate: 60,
     };
   } catch (error) {
     return {
