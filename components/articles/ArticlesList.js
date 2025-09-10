@@ -21,7 +21,7 @@ function ArticlesList({ articles, isSlider }) {
       >
         {articles.map((article) => {
           return (
-            <SwiperSlide key={article._id}>
+            <SwiperSlide key={article.id}>
               <ArticleCard articleData={article} />
             </SwiperSlide>
           );

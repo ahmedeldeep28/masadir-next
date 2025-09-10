@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getStrapiMedia } from './../../lib/utils';
+import { formatDate, getStrapiMedia } from "./../../lib/utils";
 
 function ArticleCard({ articleData }) {
-  const { title, publishedAt, slug, description, category, cover } = articleData;
+  const { title, publishedAt, slug, description, category, cover } =
+    articleData;
 
   return (
     <Link href={`/article/${slug}`}>
@@ -12,8 +13,8 @@ function ArticleCard({ articleData }) {
           <Image
             width={650}
             height={350}
-          src={getStrapiMedia(cover.url)}
-          blurDataURL={getStrapiMedia(cover.url)}
+            src={getStrapiMedia(cover.url)}
+            blurDataURL={getStrapiMedia(cover.url)}
             placeholder="blur"
             alt={cover.alternativeText}
           />
@@ -23,7 +24,7 @@ function ArticleCard({ articleData }) {
             {category?.name}
           </span>
           <span className="date fs-p3 font-title">
-            <i className="fi-rr-calendar mr-1"></i> {publishedAt}
+             {formatDate(publishedAt)} <i className="fi-rr-calendar mr-1"></i>
           </span>
         </div>
         <div className="body">

@@ -59,7 +59,6 @@ function Footer() {
                 <li className='text-light fs-p2 mb-2'><Link href="/suggest">اقترح مصدر</Link></li>
                 <li className='text-light fs-p2 mb-2'><Link href="/faqs">سؤال وجواب</Link></li>
                 <li className='text-light fs-p2 mb-2'><Link href="/contact">تواصل معنا</Link></li>
-                <li className='text-light fs-p2 mb-2'><Link href="/privacy">ساسية الخصوصيه</Link></li>
               </ul>
             </div>
 
