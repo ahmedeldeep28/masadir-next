@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
-const path = require('path')
+const path = require("path");
 
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["lovable-egg-f767570d7b.strapiapp.com","localhost"],
+    domains: ["lovable-egg-f767570d7b.media.strapiapp.com", "localhost"],
   },
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
+    includePaths: [path.join(__dirname, "styles")],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
